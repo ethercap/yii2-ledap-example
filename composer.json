@@ -1,0 +1,25 @@
+{
+    "name": "ethercap/yii2-ledap-example",
+    "description": "example for yii2-ledap",
+    "keywords": ["yii2", "extension", "ledap", "vue", "bootstrap"],
+    "homepage": "https://github.com/ethercap/yii2-ledap-example",
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "李仕鹏",
+            "email": "lspbupt@sina.com"
+        },
+        {
+            "name": "卢子明",
+            "email": "luzhiming@ethercap.com"
+        },
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "ethercap\\ledapExample\\": "src/"
+        }
+    }
+}
