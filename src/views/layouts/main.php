@@ -24,13 +24,13 @@ use yii\helpers\Html;
 
   <!-- Page Wrapper -->
   <div id="wrapper">
-    <?=$this->render('ledap-sidebar')?>
+    <?=$this->render('sidebar')?>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
       <div id="content">
         <!-- Topbar -->
-        <?=$this->render('ledap-header'); ?>
+        <?=$this->render('header'); ?>
         <!-- Begin Page Content -->
         <div class="container-fluid" id="app">
           <?= $content ?>

@@ -14,9 +14,10 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'ethercap\ledapExample\controllers';
     // 数据库
     public $db;
+    public $controllerNamespace = 'ethercap\ledapExample\controllers';
+    public $layout = '@vendor/ethercap/yii2-ledap-example/src/views/layouts/main';
 
     /**
      * @inheritdoc
@@ -28,6 +29,7 @@ class Module extends \yii\base\Module
             'dsn' => 'sqlite:'.dirname(__DIR__).'/sql/example.db',
         ];
         $this->db = Instance::ensure($this->db, Connection::class);
+        \Yii::configure($this, require(__DIR__ . '/config.php'));
         parent::init();
     }
 }

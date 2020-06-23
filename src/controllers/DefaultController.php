@@ -1,9 +1,12 @@
 <?php
 
-namespace ethercap\ledapExample;
+namespace ethercap\ledapExample\controllers;
 
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\web\Response;
+use Yii;
+use ethercap\common\helpers\SysMsg;
 
 /**
  * DefaultController implements the CRUD actions for Passwd model.
@@ -32,5 +35,11 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         return $this->render('index', []);
+    }
+
+    public function actionMenu()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return SysMsg::getOkData($this->module->params['menu']);
     }
 }
