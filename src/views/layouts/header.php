@@ -3,12 +3,25 @@
     <button @click="toggleSideBar" class="btn btn-link rounded-circle mr-3">
       <i class="fa fa-bars"></i>
     </button>
+    <b-form inline class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <label class="sr-only" for="inline-form-input-name">搜索</label>
+        <b-input-group>
+            <b-input
+              class="bg-light border-0 small"
+              placeholder="Search For..."
+            ></b-input>
+            <b-input-group-append>
+                <b-button variant="primary"><i class="fas fa-search fa-sm"></i></b-button>
+            </b-input-group-append>
+        </b-input-group>
+    </b-form>
     <ul class="navbar-nav ml-auto">
-      <b-nav-item-dropdown class="no-arrow mx-1" right>
+      <b-nav-item-dropdown class="no-arrow mx-1" right menu-class="dropdown-list">
         <template v-slot:button-content>
             <i class="fa fa-bell fa-fw"></i>
             <span class="badge badge-danger badge-counter mr-n1">3+</span>
         </template>
+        <li>
         <b-dropdown-header class="bg-primary">Alerts Center</b-dropdown-header>         
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
@@ -44,6 +57,7 @@
                   </div>
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+      </li>
       </b-nav-item-dropdown>
       <b-nav-item-dropdown class="no-arrow mx-1" right>
         <template v-slot:button-content>

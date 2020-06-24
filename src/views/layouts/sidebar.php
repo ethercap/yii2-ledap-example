@@ -8,12 +8,12 @@
     <div class="sidebar-brand-text mx-3">ledap示例</div>
   </a>
 
-  <div v-for="item, itemKey in items" :key="itemKey">
+  <div v-for="group in items" :key="group.id">
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-      {{itemKey}}
+      {{group.title}}
     </div>
-    <b-nav-item v-for="obj in item" :href="obj.url" :class="{active : obj.id == menu}" :key="obj.id">
+    <b-nav-item v-for="obj in group.items" :href="obj.url" :class="{active : obj.id == menu}" :key="obj.id">
        <i class="fas fa-fw" :class="obj.icon"></i>
        <span>{{obj.title}}</span>
     </b-nav-item>

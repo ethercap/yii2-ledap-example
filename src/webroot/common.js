@@ -6,7 +6,9 @@ ledap.App.getTheme().addComponent({
 },'dropdown');
 Vue.mixin({
   updated: function() {
-    window.watermark.refresh();
+    if(window.watermark) {
+        window.watermark.refresh();
+    }
   }
 });
 const headerApp = new Vue({
@@ -31,26 +33,28 @@ const headerApp = new Vue({
 const sideBarApp = new Vue({
     el:'#sidebar',
     data: {
-        menu: '',
+        selected: '',
         isToggle: false,
-        items : {
-            " " : [
-                {id: 'admin-default', title:'仪表盘', url:'/ledap/index', icon: 'fa-tachometer-alt'},
-            ],
-        },
+        items : [],
     },
     created: function(){
         //从ls中取isToggle
         let isToggle = localStorage.getItem("isToggle")
         this.isToggle = isToggle === 'true' ? true : false;
-        this.initMenu();
+        this.getItems();
+        this.initSelected();
     },
     methods: {
         toggle:function(){
             this.isToggle = !this.isToggle;
             localStorage.setItem("isToggle", this.isToggle);
         },
-        initMenu: function(){
+        getItems(){
+            ledap.App.request({url:'/ledap/default/menu'}, (data)=>{
+                this.items = data.data
+            });
+        },
+        initSelected: function(){
             let pathArr = location.pathname.split("/");
             let newArr = [];
             for(i = 0; i<pathArr.length; i++) {
@@ -59,10 +63,10 @@ const sideBarApp = new Vue({
                 }
             }
             newArr.pop();
-            this.menu = newArr.join('-');
+            this.selected = newArr.join('-');
         },
-        setMenu:function(val) {
-            this.menu = val;
+        setSelected:function(val) {
+            this.selected = val;
         }
     },
 });

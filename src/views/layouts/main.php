@@ -5,7 +5,7 @@
 
 use yii\helpers\Html;
 
-\widget\assets\LedapAppAsset::register($this);
+\ethercap\ledapExample\assets\AppAsset::register($this);
 \ethercap\ledap\helpers\JsHelper::register($this);
 ?>
 <?php $this->beginPage() ?>
