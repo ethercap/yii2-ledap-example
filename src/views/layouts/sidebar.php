@@ -3,7 +3,7 @@
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/ledap/">
     <div class="sidebar-brand-icon">
-        <img src="/img/ledap-logo.png" width="24"></img>
+        <img src="/js/ledap/img/ledap-logo.png" width="24"></img>
     </div>
     <div class="sidebar-brand-text mx-3">ledap示例</div>
   </a>
@@ -13,7 +13,7 @@
     <div class="sidebar-heading">
       {{group.title}}
     </div>
-    <b-nav-item v-for="obj in group.items" :href="obj.url" :class="{active : obj.id == menu}" :key="obj.id">
+    <b-nav-item v-for="obj in group.items" :href="obj.url" :class="{active : obj.id == selected}" :key="obj.id">
        <i class="fas fa-fw" :class="obj.icon"></i>
        <span>{{obj.title}}</span>
     </b-nav-item>

@@ -12,13 +12,13 @@ return [
         'menu' => [
             [
                 'title' => '示例',
-                'id' => 'basic',
+                'id' => 'example',
                 'items' => [
                     [
                         'id' => 'dashboard',
                         'title' => 'Dashboard示例',
                         'icon' => 'fa-tachometer-alt',
-                        'url' => Url::to('default/index'),
+                        'url' => '/ledap/deafult/index',
                         'items' => [],
                     ],
                     [

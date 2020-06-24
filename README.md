@@ -37,3 +37,8 @@ return [
     ],
 ];
 ```
+然后我们把静态资源link到对应的目录
+```bash
+cd your_project
+ln -s `pwd`/vendor/ethercap/yii2-ledap-example/src/webroot frontend/web/js/ledap
+```

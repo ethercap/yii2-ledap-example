@@ -34,7 +34,31 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index', []);
+        /** 正常的配置需要交给前端来渲染，有如下三种方式来设置配置（不推荐之前的在php模板中直接书写<?php?>方式）：
+         *  1. registerJsData, 本例所示即为通过registerJsData来设置
+         *  2. ajax模式，通过接口来获取。菜单就是采用的这种模式。
+         *  3. 直接把配置写在js中。
+         * */
+        $data = [
+            'saleData' => [
+                ['title' => 'EARNINGS (MONTHLY)', 'subTitle' => '$40,000', 'icon' => 'fa-calendar', 'variant' => 'primary', 'progress' => '', ],
+                ['title' => 'EARNINGS (ANNUAL)', 'subTitle' => '$215,000', 'icon' => 'fa-dollar-sign', 'variant' => 'success', 'progress' => '', ],
+                ['title' => 'TASKS', 'subTitle' => '50%', 'icon' => 'fa-clipboard-list', 'variant' => 'info', 'progress' => 50, ],
+                ['title' => 'PENDING REQUESTS', 'subTitle' => '18', 'icon' => 'fa-comments', 'variant' => 'warning', 'progress' => '', ],
+            ],
+
+            'colors' => [
+                ['title' => 'Primary', 'bg' => 'bg-primary', 'value' => '#4e73df'],
+                ['title' => 'Success', 'bg' => 'bg-success', 'value' => '#1cc88a'],
+                ['title' => 'Info', 'bg' => 'bg-info', 'value' => '#36b9cc'],
+                ['title' => 'Warning', 'bg' => 'bg-warning', 'value' => '#f6c23e'],
+                ['title' => 'Danger', 'bg' => 'bg-danger', 'value' => '#e74a3b'],
+                ['title' => 'Secondary', 'bg' => 'bg-secondary', 'value' => '#858796'],
+                ['title' => 'Light', 'bg' => 'bg-light', 'value' => '#f8f9fc', 'textblack' => true],
+                ['title' => 'Dark', 'bg' => 'bg-dark', 'value' => '#5a5c69'],
+            ],
+        ];
+        return $this->render('index', ['data' => $data]);
     }
 
     public function actionMenu()
