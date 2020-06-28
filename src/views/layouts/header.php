@@ -1,8 +1,8 @@
 <div id="header">
-  <b-nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-    <button @click="toggleSideBar" class="btn btn-link rounded-circle mr-3">
-      <i class="fa fa-bars"></i>
-    </button>
+    <b-nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <button @click="toggleSideBar" class="btn btn-link rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+        </button>
     <b-form inline class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
         <label class="sr-only" for="inline-form-input-name">搜索</label>
         <b-input-group>
@@ -15,57 +15,53 @@
             </b-input-group-append>
         </b-input-group>
     </b-form>
+ 
     <ul class="navbar-nav ml-auto">
-      <b-nav-item-dropdown class="no-arrow mx-1" right menu-class="dropdown-list">
-        <template v-slot:button-content>
-            <i class="fa fa-bell fa-fw"></i>
-            <span class="badge badge-danger badge-counter mr-n1">3+</span>
-        </template>
-        <li>
-        <b-dropdown-header class="bg-primary">Alerts Center</b-dropdown-header>         
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
+        <b-nav-item-dropdown class="no-arrow mx-1" right menu-class="dropdown-list">
+            <template v-slot:button-content>
+                <i class="fa fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter mr-n1">{{alerts.num}}</span>
+            </template>
+            <b-dd-header>ALERT CENTER</b-dd-header>
+            <b-dropdown-item link-class="d-flex align-items-center" v-for="item in alerts.items" :key="'alerts'+item.title">
+                <div class="mr-3">
+                    <div class="icon-circle bg-primary" :class="'bg-'+item.variant">
+                        <i class="fas text-white" :class="item.icon"></i>
                     </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-      </li>
-      </b-nav-item-dropdown>
-      <b-nav-item-dropdown class="no-arrow mx-1" right>
-        <template v-slot:button-content>
-            <i class="fa fa-envelope fa-fw"></i>
-            <span class="badge badge-danger badge-counter">7</span>
-        </template>
-      </b-nav-item-dropdown>
-      <div class="topbar-divider d-none d-sm-block"></div>
+                </div> 
+                <div>
+                    <div class="small text-gray-500">{{item.date}}</div>
+                    <span :class="{'font-weight-bold':item.important}">{{item.title}}</span>
+                </div>
+            </b-dropdown-item>
+            <b-dropdown-item link-class="text-center small text-gray-500">
+                Show All Alerts
+            </b-dropdown-item>
+        </b-nav-item-dropdown>
+        
+
+        <b-nav-item-dropdown class="no-arrow mx-1" right menu-class="dropdown-list">
+            <template v-slot:button-content>
+                <i class="fa fa-envelope fa-fw"></i>
+                <span class="badge badge-danger badge-counter">7</span>
+            </template>
+            <b-dd-header>MESSAGE CENTER</b-dd-header>
+            <b-dropdown-item link-class="d-flex align-items-center" v-for="item,index in msgs.items" :key="'msg'+index">
+                <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" :src="item.img" alt="">
+                    <div class="status-indicator" :class="'bg-' + item.variant"></div>
+                </div>
+                <div :class="{'font-weight-bold':item.important}">
+                    <div class="text-truncate">{{item.msg}}</div>
+                    <div class="small text-gray-500">{{item.user}}</div>
+                </div>
+            </b-dropdown-item>
+            <b-dropdown-item link-class="text-center small text-gray-500">
+                Show All Messages
+            </b-dropdown-item>
+        </b-nav-item-dropdown>
+      
+        <div class="topbar-divider d-none d-sm-block"></div>
       <b-nav-item-dropdown class="no-arrow mx-1" right>
         <template v-slot:button-content>
           <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
