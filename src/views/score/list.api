@@ -1,0 +1,28 @@
+<?php
+
+use ethercap\apiBase\widgets\ListApi;
+use ethercap\apiBase\widgets\DetailApi;
+
+$res->field('params')->widget(DetailApi::class, [
+    'useModelResponse' => true,
+    'model' => $searchModel,
+    'columns' => [
+        'id',
+        'lessonId',
+        'studentId',
+        'score',
+        'creationTime',
+        'updateTime',
+    ],
+]);
+$res->data()->widget(ListApi::class, [
+    'dataProvider' => $dataProvider,
+    'columns' => [
+        'id',
+        'lessonId',
+        'studentId',
+        'score',
+        'creationTime',
+        'updateTime',
+    ],
+]);

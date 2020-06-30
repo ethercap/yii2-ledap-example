@@ -1,0 +1,16 @@
+<?php
+
+use ethercap\apiBase\widgets\DetailApi;
+
+$res->field()->widget(DetailApi::class, [
+    'useModelResponse' => true,
+    'model' => $model,
+    'columns' => [
+        'id',
+        'lessonId',
+        'studentId',
+        'score',
+        'creationTime',
+        'updateTime',
+    ],
+]);

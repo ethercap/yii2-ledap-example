@@ -1,0 +1,36 @@
+<?php
+
+use ethercap\apiBase\widgets\ListApi;
+use ethercap\apiBase\widgets\DetailApi;
+
+$res->field('params')->widget(DetailApi::class, [
+    'useModelResponse' => true,
+    'model' => $searchModel,
+    'columns' => [
+        'id',
+        'name',
+        'mobile',
+        'status',
+        'attr',
+        'creationTime',
+        'updateTime',
+    ],
+]);
+$res->data()->widget(ListApi::class, [
+    'dataProvider' => $dataProvider,
+    'columns' => [
+        'id',
+        'name',
+        'mobile',
+        'status',
+        'gender',
+        [
+            'attribute' => 'genderDesc',
+            'value' => function ($model) {
+                return $model->getAttributeDesc('gender');
+            },
+        ],
+        'creationTime',
+        'updateTime',
+    ],
+]);

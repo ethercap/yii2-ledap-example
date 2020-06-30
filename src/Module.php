@@ -24,10 +24,20 @@ class Module extends \yii\base\Module
      */
     public function init()
     {
-        empty($this->db) && $this->db = [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'sqlite:'.dirname(__DIR__).'/sql/example.db',
-        ];
+        if (empty($this->db)) {
+            $file = Yii::getAlias('@app/runtime/example.db');
+            if (!file_exists($file)) {
+                $sourceFile = __DIR__.'/sql/example.db';
+                copy($sourceFile, $file);
+            }
+            $this->db = [
+                'class' => 'yii\db\Connection',
+                'dsn' => 'sqlite:'.$file,
+            ];
+        }
+        if (!isset(Yii::$app->request->parsers['application/json'])) {
+            Yii::$app->request->parsers['application/json'] = 'yii\web\JsonParser';
+        }
         $this->db = Instance::ensure($this->db, Connection::class);
         \Yii::configure($this, require(__DIR__ . '/config.php'));
         parent::init();

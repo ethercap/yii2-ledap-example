@@ -1,0 +1,23 @@
+<?php
+
+use ethercap\apiBase\widgets\DetailApi;
+
+$_GET['withConfig'] = true;
+$res->field()->widget(DetailApi::class, [
+    'useModelResponse' => true,
+    'model' => $model,
+    'columns' => [
+        'id',
+        'name',
+        'mobile',
+        'gender',
+        [
+            'attribute' => 'genderDesc',
+            'value' => function ($model) {
+                return $model->getAttributeDesc('gender');
+            },
+        ],
+        'creationTime',
+        'updateTime',
+    ],
+]);
