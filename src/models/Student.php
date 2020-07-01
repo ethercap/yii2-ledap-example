@@ -2,7 +2,6 @@
 
 namespace ethercap\ledapExample\models;
 
-use Yii;
 use yii\db\ActiveRecord;
 use ethercap\common\behaviors\DateTimeBehavior;
 use ethercap\common\behaviors\AttrBehavior;
@@ -56,7 +55,7 @@ class Student extends \yii\db\ActiveRecord
      */
     public static function getDb()
     {
-        return Yii::$app->get('ledapdb');
+        return \ethercap\ledapExample\Module::getInstance()->db;
     }
 
     /**

@@ -5,12 +5,16 @@ namespace ethercap\ledapExample\forms;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use ethercap\ledapExample\models\Lesson;
+use yii\helpers\ArrayHelper;
 
 /**
  * LessonSearchForm represents the model behind the search form of `ethercap\ledapExample\models\Lesson`.
  */
 class LessonSearchForm extends Lesson
 {
+    public $from;
+    public $to;
+
     /**
      * @inheritdoc
      */
@@ -18,8 +22,15 @@ class LessonSearchForm extends Lesson
     {
         return [
             [['id', 'status'], 'integer'],
-            [['name', 'attr', 'creationTime', 'updateTime'], 'safe'],
+            [['name', 'from', 'to'], 'safe'],
         ];
+    }
+
+    public function attributeLabels()
+    {
+        return ArrayHelper::merge(parent::attributeLabels(), [
+            'from' => '时间',
+        ]);
     }
 
     /**
@@ -46,6 +57,11 @@ class LessonSearchForm extends Lesson
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC,
+                ],
+            ],
         ]);
 
         $this->load($params, '');
@@ -55,13 +71,18 @@ class LessonSearchForm extends Lesson
             // $query->where('0=1');
             return $dataProvider;
         }
+        if ($this->from) {
+            $query->andWhere(['>=', 'creationTime', $this->from]);
+        }
+
+        if ($this->to) {
+            $query->andWhere(['<', 'creationTime', $this->to]);
+        }
 
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'creationTime' => $this->creationTime,
-            'updateTime' => $this->updateTime,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

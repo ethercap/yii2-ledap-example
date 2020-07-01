@@ -2,7 +2,6 @@
 
 namespace ethercap\ledapExample\models;
 
-use Yii;
 use yii\helpers\ArrayHelper;
 use yii\db\ActiveRecord;
 use ethercap\common\behaviors\DateTimeBehavior;
@@ -46,7 +45,7 @@ class Lesson extends \yii\db\ActiveRecord
      */
     public static function getDb()
     {
-        return Yii::$app->get('ledapdb');
+        return \ethercap\ledapExample\Module::getInstance()->db;
     }
 
     /**
@@ -59,6 +58,7 @@ class Lesson extends \yii\db\ActiveRecord
             [['attr'], 'string'],
             [['creationTime', 'updateTime'], 'safe'],
             [['name'], 'string', 'max' => 16],
+            ['comment', 'string'],
             [['name'], 'unique'],
         ];
     }
@@ -73,6 +73,7 @@ class Lesson extends \yii\db\ActiveRecord
             'name' => '名称',
             'status' => '状态',
             'attr' => 'attr',
+            'comment' => '备注',
             'creationTime' => '创建时间',
             'updateTime' => '更新时间',
         ];
@@ -104,7 +105,9 @@ class Lesson extends \yii\db\ActiveRecord
             [
                 'class' => AttrBehavior::class,
                 'attrKey' => 'attr',
-                'properties' => [],
+                'properties' => [
+                    'comment' => '',
+                ],
             ],
         ];
     }

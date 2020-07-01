@@ -2,7 +2,6 @@
 
 namespace ethercap\ledapExample\models;
 
-use Yii;
 use yii\db\ActiveRecord;
 use ethercap\common\behaviors\DateTimeBehavior;
 
@@ -31,7 +30,7 @@ class Score extends \yii\db\ActiveRecord
      */
     public static function getDb()
     {
-        return Yii::$app->get('ledapdb');
+        return \ethercap\ledapExample\Module::getInstance()->db;
     }
 
     /**

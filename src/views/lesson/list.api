@@ -10,9 +10,8 @@ $res->field('params')->widget(DetailApi::class, [
         'id',
         'name',
         'status',
-        'attr',
-        'creationTime',
-        'updateTime',
+        'from',
+        'to',
     ],
 ]);
 $res->data()->widget(ListApi::class, [
@@ -20,6 +19,7 @@ $res->data()->widget(ListApi::class, [
     'columns' => [
         'id',
         'name',
+        'comment',
         'status',
         'attr',
         'creationTime',
