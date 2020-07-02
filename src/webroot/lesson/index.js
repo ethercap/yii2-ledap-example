@@ -1,4 +1,4 @@
-ledap.App.register(["form-item","detail", "group", "tab", 'grid', 'pager', "baseinput"], Vue);
+ledap.App.register(["form-item","detail", "group", "tab", 'grid', 'pager', "baseinput", 'groupinput'], Vue);
 const app = new Vue({
   el: "#app",
   data : {
@@ -15,12 +15,37 @@ const app = new Vue({
         type:"view",
     },
     columns : [
-        'id',
-        'name',
-        'status',
-        'attr',
-        'creationTime',
-        //'updateTime',
+        {
+            attribute: 'id',
+            label: 'ID',
+            useSort : true,
+        },
+        {
+            attribute: 'name',
+            label: '名称',
+            useSort: true,
+        },
+        {
+            attribute: 'status',
+            label: '状态',
+            value: function(model){
+                if(model.status == 0) {
+                    return '<b-badge variant="success">' + model.statusDesc + '</b-badge>';
+                }else {
+                    return '<b-badge variant="warning">' + model.statusDesc + '</b-badge>';
+                }    
+            },
+            format: 'html',
+        },
+        {
+            attribute: 'comment',
+            label: '简介',
+        },
+        {
+            attribute: 'creationTime',
+            label: '创建时间',
+            useSort:true,
+        },
         {
             'label' : '操作',
             'value' : function(model) {
@@ -88,9 +113,9 @@ const app = new Vue({
         ledap.App.request({
             url: url,
             method: 'GET',
-        }, (data) =>{
+        }, (res) =>{
             this.isLoading = false;
-            this.model = ledap.App.getModel(data.model).load(data.data);
+            this.model = ledap.App.getModel(data.model).load(res.data);
         }, (data) => {
             this.isLoading = false;
             this.$toast(data.message, {variant:'danger'});
@@ -109,7 +134,7 @@ const app = new Vue({
             this.$toast(error, {variant:'warning'});
             return false;
         }
-        let url = this.type === "create" ? '/ledap/lesson/create' : '/ledap/lesson/update?id='+this.model.id;
+        let url = this.modalConfig.type === "create" ? '/ledap/lesson/create' : '/ledap/lesson/update?id='+this.model.id;
         this.isLoading = true;
         ledap.App.request({
             url: url,

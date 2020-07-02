@@ -9,7 +9,7 @@ $res->field()->widget(DetailApi::class, [
         'id',
         'name',
         'status',
-        'attr',
+        'comment',
         'creationTime',
         'updateTime',
     ],

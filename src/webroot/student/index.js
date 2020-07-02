@@ -10,7 +10,11 @@ const app = new Vue({
     }),
     //此处的规则基本与GridView一致，详细参见文档。本处尽量给一个比较详细的各种情况的示例，实际不用这么复杂
     columns : [
-        'id',
+        {
+            attribute:'id',
+            label: 'ID',
+            useSort:true,
+        },
         {
             attribute : 'name',
             label: '姓名',

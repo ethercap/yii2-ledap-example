@@ -24,14 +24,14 @@ return [
                     [
                         'id' => 'crudExample',
                         'title' => 'crud示例',
-                        'icon' => 'fa-tachometer-alt',
+                        'icon' => 'fa-list',
                         'url' => '/ledap/student/',
                         'items' => [],
                     ],
                     [
                         'id' => 'ajaxCrudExample',
                         'title' => 'ajaxCrud示例',
-                        'icon' => 'fa-tachometer-alt',
+                        'icon' => 'fa-list-alt',
                         'url' => '/ledap/lesson/',
                         'items' => [],
                     ],

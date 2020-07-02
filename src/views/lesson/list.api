@@ -21,6 +21,12 @@ $res->data()->widget(ListApi::class, [
         'name',
         'comment',
         'status',
+        [
+            'attribute' => 'statusDesc',
+            'value' => function ($model) {
+                return $model->getAttributeDesc('status');
+            },
+        ],
         'attr',
         'creationTime',
         'updateTime',

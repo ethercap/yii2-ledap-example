@@ -7,6 +7,7 @@ use yii\db\ActiveRecord;
 use ethercap\common\behaviors\DateTimeBehavior;
 use ethercap\common\behaviors\AttrBehavior;
 use ethercap\common\traits\RuleTrait;
+use ethercap\common\validators\DictValidator;
 
 /**
  * 该model对应数据库表 "lesson".
@@ -24,11 +25,13 @@ class Lesson extends \yii\db\ActiveRecord
 
     /** 状态：正常*/
     const STATUS_NEW = 0;
+    const STATUS_DISABLED = 1;
     /** 状态：删除*/
     const STATUS_DELETED = 255;
 
     public static $statusArr = [
         self::STATUS_NEW => '正常',
+        self::STATUS_DISABLED => '暂停',
         self::STATUS_DELETED => '已删除',
     ];
 
@@ -54,12 +57,14 @@ class Lesson extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name', 'status'], 'required'],
             [['status'], 'integer'],
             [['attr'], 'string'],
             [['creationTime', 'updateTime'], 'safe'],
             [['name'], 'string', 'max' => 16],
             ['comment', 'string'],
             [['name'], 'unique'],
+            ['status', DictValidator::class, 'list' => self::$statusArr, 'excludes' => [''.self::STATUS_DELETED], ],
         ];
     }
 

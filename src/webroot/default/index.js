@@ -4,6 +4,13 @@ const app = new Vue({
     data : {
         'colors' : data.colors,
         'saleData' : data.saleData,
+        projects: [
+            {title: 'Server Migration', 'variant': 'danger', 'value': '20%'},
+            {title: 'Sales Tracking', 'variant': 'warning', 'value': '40%'},
+            {title: 'Customer Database', 'variant': 'primary', 'value': '60%'},
+            {title: 'Payout Details', 'variant': 'info', 'value': '80%'},
+            {title: 'Account Setup', 'variant': 'success', 'value': '100%'},
+        ],
         chartData: {
             columns: ['date','value'],
             rows: [
