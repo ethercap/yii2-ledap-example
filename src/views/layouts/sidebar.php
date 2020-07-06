@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" :class="{toggled:isToggle}"  id="sidebar">
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/ledap/">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/ledap/default/index">
     <div class="sidebar-brand-icon">
         <img src="/js/ledap/img/ledap-logo.png" width="24"></img>
     </div>

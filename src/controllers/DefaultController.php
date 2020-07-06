@@ -66,4 +66,54 @@ class DefaultController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
         return SysMsg::getOkData($this->module->params['menu']);
     }
+
+    public function actionBaseinput()
+    {
+        return $this->render('baseinput', []);
+    }
+
+    public function actionCheckbox()
+    {
+        return $this->render('checkbox', []);
+    }
+
+    public function actionDropdown()
+    {
+        return $this->render('dropdown', []);
+    }
+
+    public function actionFormitem()
+    {
+        return $this->render('form-item', []);
+    }
+
+    public function actionGrid()
+    {
+        return $this->render('grid', []);
+    }
+
+    public function actionGroupinput()
+    {
+        return $this->render('groupinput', []);
+    }
+
+    public function actionRadio()
+    {
+        return $this->render('radio', []);
+    }
+
+    public function actionSearchinput()
+    {
+        return $this->render('searchinput', []);
+    }
+
+    public function actionSelect2()
+    {
+        return $this->render('select2', []);
+    }
+
+    public function actionTab()
+    {
+        return $this->render('tab', []);
+    }
 }

@@ -1,18 +1,18 @@
 ledap.App.register(["form-item", "group", "tab", 'grid', 'pager'], Vue);
 const app = new Vue({
     el: "#app",
-    data : {
-        'colors' : data.colors,
-        'saleData' : data.saleData,
+    data: {
+        'colors': data.colors,
+        'saleData': data.saleData,
         projects: [
-            {title: 'Server Migration', 'variant': 'danger', 'value': '20%'},
-            {title: 'Sales Tracking', 'variant': 'warning', 'value': '40%'},
-            {title: 'Customer Database', 'variant': 'primary', 'value': '60%'},
-            {title: 'Payout Details', 'variant': 'info', 'value': '80%'},
-            {title: 'Account Setup', 'variant': 'success', 'value': '100%'},
+            { title: 'Server Migration', 'variant': 'danger', 'value': '20%' },
+            { title: 'Sales Tracking', 'variant': 'warning', 'value': '40%' },
+            { title: 'Customer Database', 'variant': 'primary', 'value': '60%' },
+            { title: 'Payout Details', 'variant': 'info', 'value': '80%' },
+            { title: 'Account Setup', 'variant': 'success', 'value': '100%' },
         ],
         chartData: {
-            columns: ['date','value'],
+            columns: ['date', 'value'],
             rows: [
                 { date: '2020-06-05', value: 116 },
                 { date: '2020-06-06', value: 129 },
@@ -67,12 +67,12 @@ const app = new Vue({
             ],
         },
         chartSettings: {
-            labelMap:{
+            labelMap: {
                 date: '日期',
                 value: '销售金额',
             },
         },
-        pieData:{
+        pieData: {
             columns: ['platform', 'value'],
             rows: [
                 { platform: 'web', value: 56 },
@@ -81,5 +81,5 @@ const app = new Vue({
             ],
         },
     },
+    created() {}
 });
-
