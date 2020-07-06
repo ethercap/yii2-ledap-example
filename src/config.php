@@ -24,14 +24,14 @@ return [
                     [
                         'id' => 'crudExample',
                         'title' => 'crud示例',
-                        'icon' => 'fa-list',
+                        'icon' => 'fa-tachometer-alt',
                         'url' => '/ledap/student/',
                         'items' => [],
                     ],
                     [
                         'id' => 'ajaxCrudExample',
                         'title' => 'ajaxCrud示例',
-                        'icon' => 'fa-list-alt',
+                        'icon' => 'fa-tachometer-alt',
                         'url' => '/ledap/lesson/',
                         'items' => [],
                     ],
@@ -62,16 +62,73 @@ return [
                 'id' => 'CrudGroup',
                 'items' => [
                     [
-                        'id' => 'select2',
-                        'title' => '搜索框',
-                        'icon' => '',
+                        'id' => 'baseinput',
+                        'title' => 'baseinput',
+                        'url' => Url::to('/ledap/default/baseinput'),
+                        'icon' => 'fa-cog',
                         'items' => [
                         ],
-                    ],
-                    [
+                    ], [
+                        'id' => 'form-item',
+                        'title' => 'form-item',
+                        'url' => Url::to('/ledap/default/formitem'),
+                        'icon' => 'fa-cog',
+                        'items' => [
+                        ],
+                    ], [
+                        'id' => 'groupinput',
+                        'title' => 'groupinput',
+                        'url' => Url::to('/ledap/default/groupinput'),
+                        'icon' => 'fa-cog',
+                        'items' => [
+                        ],
+                    ], [
+                        'id' => 'tab',
+                        'title' => 'tab',
+                        'url' => Url::to('/ledap/default/tab'),
+                        'icon' => 'fa-cog',
+                        'items' => [
+                        ],
+                    ], [
+                        'id' => 'checkbox',
+                        'title' => 'checkbox',
+                        'url' => Url::to('/ledap/default/checkbox'),
+                        'icon' => 'fa-cog',
+                        'items' => [
+                        ],
+                    ], [
+                        'id' => 'radio',
+                        'title' => 'radio',
+                        'url' => Url::to('/ledap/default/radio'),
+                        'icon' => 'fa-cog',
+                        'items' => [
+                        ],
+                    ], [
+                        'id' => 'dropdown',
+                        'title' => 'dropdown',
+                        'url' => Url::to('/ledap/default/dropdown'),
+                        'icon' => 'fa-cog',
+                        'items' => [
+                        ],
+                    ], [
+                        'id' => 'searchinput',
+                        'title' => 'searchinput',
+                        'url' => Url::to('/ledap/default/searchinput'),
+                        'icon' => 'fa-cog',
+                        'items' => [
+                        ],
+                    ], [
+                        'id' => 'select2',
+                        'title' => 'select2',
+                        'url' => Url::to('/ledap/default/select2'),
+                        'icon' => 'fa-cog',
+                        'items' => [
+                        ],
+                    ], [
                         'id' => 'grid',
                         'title' => 'grid',
-                        'icon' => '',
+                        'url' => Url::to('/ledap/default/grid'),
+                        'icon' => 'fa-cog',
                         'items' => [
                         ],
                     ],
