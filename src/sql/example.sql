@@ -30,3 +30,10 @@ CREATE TABLE `student_score`(
 );
 CREATE INDEX  `idx_ss_lessonId` on `student_score` (`lessonId`);
 CREATE INDEX  `idx_ss_studentId` on `student_score` (`studentId`);
+
+CREATE TABLE `document` (
+  `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
+  `content` text,
+  `creationTime` datetime,
+  `updateTime` datetime 
+);
