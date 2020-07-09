@@ -79,8 +79,10 @@ const sideBarApp = new Vue({
                 if (pathArr[i]) {
                     newArr.push(pathArr[i]);
                 }
+                if(i >=2) {
+                    break;
+                }
             }
-            newArr.pop();
             this.selected = newArr.join('-');
         },
         setSelected: function(val) {

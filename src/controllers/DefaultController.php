@@ -92,6 +92,11 @@ class DefaultController extends Controller
         return $this->render('grid', []);
     }
 
+    public function actionGlobalComponent()
+    {
+        return $this->render('global-component', []);
+    }
+
     public function actionGroupinput()
     {
         return $this->render('groupinput', []);

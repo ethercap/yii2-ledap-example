@@ -14,7 +14,7 @@ class AppAsset extends AssetBundle
     public $css = [
     ];
     public $js = [
-        '/js/ledap/common.js?v=2',
+        '/js/ledap/common.js?v=4',
     ];
     public $depends = [
         '\ethercap\ledap\assets\SBadminAsset',

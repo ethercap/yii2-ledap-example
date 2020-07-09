@@ -9,6 +9,10 @@ const app = new Vue({
     value: "",
   },
   created: function(){
+    let params = GetParams();
+    if(params.id){
+        sideBarApp.selected = sideBarApp.selected + params.id;
+    }
     setTimeout(()=>{
         this.value = MavonEditor.markdownIt.render(this.model.content);
     }, 500);

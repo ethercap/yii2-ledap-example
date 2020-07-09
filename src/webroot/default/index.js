@@ -81,5 +81,7 @@ const app = new Vue({
             ],
         },
     },
-    created() {}
+    created() {
+        sideBarApp.selected = "dashboard";
+    }
 });
