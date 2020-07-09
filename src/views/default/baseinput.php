@@ -1,5 +1,12 @@
+<?php
+\ethercap\ledapExample\assets\MarkdownAsset::register($this);
+?>
+
 <div class="w-75">
-    <h1 class="h3 mb-5 text-gray-800">baseinput</h1>
+    <section class="mb-5">
+        <h1 class="h3 mb-1 text-gray-800">baseinput</h1>
+        <div><span v-html="document"></span></div>
+    </section>
 
     <form-item :model="model" attr="name">
         <template v-slot="slotProps">

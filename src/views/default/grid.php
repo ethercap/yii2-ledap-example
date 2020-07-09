@@ -1,5 +1,12 @@
+<?php
+\ethercap\ledapExample\assets\MarkdownAsset::register($this);
+?>
+
 <div class="w-75 mx-auto">
-    <h1 class="h3 mb-5 text-gray-800">grid & pager</h1>
+    <section class="mb-5">
+        <h1 class="h3 mb-1 text-gray-800">grid & pager</h1>
+        <div><span v-html="document"></span></div>
+    </section>
 
     <grid class="table table-striped" :data-provider="dp" :columns="columns"></grid>
     <pager :data-provider="dp"></pager>
