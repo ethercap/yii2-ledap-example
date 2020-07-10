@@ -1,8 +1,8 @@
 ledap.App.getTheme().addComponent({
     'name': 'dropdown1',
-    template: `<select class="form-control" v-on="inputListeners" :name="attr">
-        <option v-for="key in dictOption.order" :value="key" :selected="key === model[attr]">{{dictOption.list[key]}}</option>
-    </select>`,
+    template: '<select class="form-control" v-on="inputListeners" :name="attr">' +
+        '<option v-for="key in dictOption.order" :value="key" :selected="key === model[attr]">{{dictOption.list[key]}}</option>' +
+        '</select>',
 }, 'dropdown');
 Vue.mixin({
     updated: function() {
@@ -40,7 +40,7 @@ const headerApp = new Vue({
             this.$confirm("你确定要退出当前网站?", {
                 variant: 'danger',
                 okVariant: 'primary',
-            }).then((val) => {
+            }).then(function() {
                 if (val) {
                     location.href = url;
                 }
@@ -67,9 +67,10 @@ const sideBarApp = new Vue({
             this.isToggle = !this.isToggle;
             localStorage.setItem("isToggle", this.isToggle);
         },
-        getItems() {
-            ledap.App.request({ url: '/ledap/default/menu' }, (data) => {
-                this.items = data.data
+        getItems: function() {
+            var _this = this;
+            ledap.App.request({ url: '/ledap/default/menu' }, function(data) {
+                _this.items = data.data
             });
         },
         initSelected: function() {
@@ -79,7 +80,7 @@ const sideBarApp = new Vue({
                 if (pathArr[i]) {
                     newArr.push(pathArr[i]);
                 }
-                if(i >=2) {
+                if (i >= 2) {
                     break;
                 }
             }
