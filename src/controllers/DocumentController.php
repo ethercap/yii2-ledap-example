@@ -63,6 +63,10 @@ class DocumentController extends Controller
             throw new NotFoundHttpException('该数据不存在');
         }
         $data = $this->renderApi('model.api', ['model' => $model]);
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return $data;
+        }
         return $this->render('view', [
             'model' => $data['data'],
             'type' => $type,

@@ -1,4 +1,5 @@
 ledap.App.register(['grid', 'pager'], Vue);
+
 var app = new Vue({
     el: '#app',
     data: {
@@ -24,12 +25,24 @@ var app = new Vue({
         }, {
             attribute: 'text',
             label: '名称'
-        }]
+        }],
+        document: ''
     },
     created: function() {
         this.dp.refresh();
+        this.getDocument();
     },
     methods: {
+        getDocument: function() {
+            var _this = this;
+            ledap.App.request({
+                url: '/ledap/document/view',
+                params: { id: 19 }
+            }, function(data) {
+                var model = ledap.App.getModel(data.data);
+                _this.document = MavonEditor.markdownIt.render(model.content);
+            });
+        },
         toggle: function() {
             this.asc = !this.asc;
             this.dp.sortModels("id", this.asc);
