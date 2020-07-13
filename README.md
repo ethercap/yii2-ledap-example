@@ -37,8 +37,10 @@ return [
     ],
 ];
 ```
-然后我们把静态资源link到对应的目录
+然后需要把静态资源放置到web目录下：
+
 ```bash
 cd your_project
+#注意需要保证web用户有权限访问这个目录，否则页面会无法加载
 ln -s `pwd`/vendor/ethercap/yii2-ledap-example/src/webroot frontend/web/js/ledap
 ```
