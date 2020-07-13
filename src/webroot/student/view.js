@@ -44,6 +44,7 @@ const app = new Vue({
             this.isLoading  = false;
             if(!this.model.hasErrors()) {
                 this.$toast("操作成功");
+                location.href="/ledap/student/index";
             }
         }, (data)=>{
             this.isLoading = false;

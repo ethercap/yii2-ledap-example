@@ -30,7 +30,7 @@ const app = new Vue({
             //有时候我们希望改掉label,默认为raw,如果需要html，请设置labelFormat
             label : function(model){
                 //需要引用当前app时，用vm指代。
-                return '<span @click="vm.sort(\'mobile\')">手机号</span>';
+                return '<span @click="vm.sort(\'mobile\')" class="text-primary">手机号</span>';
             },
             labelFormat: 'html'
         },
