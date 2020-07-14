@@ -17,6 +17,7 @@
     ],
     "require": {
         "ethercap/yii2-ledap": "dev-master",
+        "ethercap/watermark": "1.0.4",
         "ethercap/common": "dev-master"
     },
     "autoload": {
