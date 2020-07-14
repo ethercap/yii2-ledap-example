@@ -65,7 +65,7 @@
       <b-nav-item-dropdown class="no-arrow mx-1" right>
         <template v-slot:button-content>
           <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-          <img class="img-profile rounded-circle" src="/js/ledap/img/user.jpg">
+          <img class="img-profile rounded-circle" src="/js/ledap/img/user.jpg" />
         </template>
         <b-dropdown-item>
           <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -80,7 +80,7 @@
           Active Log
         </b-dropdown-item>
         <div class="dropdown-divider"></div>
-        <b-dropdown-item @click="logout('/site/logout')">
+        <b-dropdown-item @click="logout('/ledap/default/index')">
           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
           Logout
         </b-dropdown-item>

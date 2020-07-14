@@ -61,20 +61,20 @@ const app = new Vue({
     this.dp.refresh("");
   },
   methods : {
-    refresh(){
+      refresh: function(){
         this.dp.refresh("");
     },
-    remove(model){
+    remove: function(model){
         if(confirm("你确定要删除该数据")) {
             ledap.App.request({
                 url: "/ledap/student/delete?id=" + model.id,
                 method: 'POST',
-            }, () =>{
+            }, function(){
                 this.dp.remove(model);
-            })
+            }.bind(this))
         }
     },
-    sort(attr){
+    sort: function(attr){
         this.dp.sort = attr;
         this.dp.refresh();
     }

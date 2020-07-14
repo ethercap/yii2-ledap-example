@@ -10,7 +10,7 @@ $this->registerJsVar('data', $data);
 </div>
 
 <b-row>
-  <b-col cols="3" class="mb-4" v-for="item in saleData" :key="item.title">
+  <b-col sm="3" class="mb-4" v-for="item in saleData" :key="item.title">
     <b-card class="shadow h-100 py-2" :class="'border-left-'+item.variant">
       <div class="row no-gutters align-items-center">
         <div class="col mr-2">

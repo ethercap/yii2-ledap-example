@@ -23,14 +23,7 @@ const app = new Vue({
     submit : function(){
         event.preventDefault();
         if(!this.model.validate()) {
-            errors = this.model.getErrors();
-            let error = "";
-            Object.keys(errors).forEach(key => {
-                if(errors[key].length > 0) {
-                    error = errors[key][0];
-                }
-            });
-            this.$toast(error, {variant:'warning'});
+            this.$toast(this.model.getFirstError(), {variant:'warning'});
             return false;
         }
         let url = this.type === "create" ? '/ledap/student/create' : '/ledap/student/update?id='+this.model.id;
@@ -39,17 +32,17 @@ const app = new Vue({
             url: url,
             method: 'POST',
             data: this.model
-        }, (data) =>{
-            this.model.load(data.data);
+        }, function(res) {
+            this.model.load(res.data);
             this.isLoading  = false;
             if(!this.model.hasErrors()) {
                 this.$toast("操作成功");
                 location.href="/ledap/student/index";
             }
-        }, (data)=>{
+        }.bind(this), function(res){
             this.isLoading = false;
-            this.$toast(data.message, {variant:'danger'});
-        });
+            this.$toast(res.message, {variant:'danger'});
+        }.bind(this));
     },
     changeType: function() {
         if(this.type === 'create') {

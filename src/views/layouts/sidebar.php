@@ -3,7 +3,7 @@
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/ledap/default/index">
     <div class="sidebar-brand-icon">
-        <img src="/js/ledap/img/ledap-logo.png" width="24"></img>
+        <img src="/js/ledap/img/ledap-logo.png" width="24" />
     </div>
     <div class="sidebar-brand-text mx-3">ledap示例</div>
   </a>

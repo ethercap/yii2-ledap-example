@@ -10,6 +10,6 @@ $this->registerJsVar('data', [
         <span v-html="value" ></span>
     </div>
     <div v-show="type !=='view'">
-        <mavon-editor v-model="model.content" @save="submit" v-on="{imgAdd:$imgAdd}" ref="md" style="z-index:500;" /> 
+        <mavon-editor v-model="model.content" @save="submit" v-on="{imgAdd:$imgAdd}" ref="md" style="z-index:500;"></mavon-editor> 
     </div>
 </b-card>

@@ -13,16 +13,16 @@ const app = new Vue({
     if(params.id){
         sideBarApp.selected = sideBarApp.selected + params.id;
     }
-    setTimeout(()=>{
+    setTimeout(function(){
         this.value = MavonEditor.markdownIt.render(this.model.content);
-    }, 500);
+    }.bind(this), 500);
   },
   methods: {
     submit : function(){
         if(!this.model.validate()) {
             errors = this.model.getErrors();
             let error = "";
-            Object.keys(errors).forEach(key => {
+            Object.keys(errors).forEach(function(key) {
                 if(errors[key].length > 0) {
                     error = errors[key][0];
                 }
@@ -36,7 +36,7 @@ const app = new Vue({
             url: url,
             method: 'POST',
             data: this.model
-        }, (data) =>{
+        }, function(data){
             this.model.load(data.data);
             this.isLoading  = false;
             if(!this.model.hasErrors()) {
@@ -45,12 +45,12 @@ const app = new Vue({
                     this.type = "update";
                 }
             }
-        }, (data)=>{
+        }.bind(this), function(data){
             this.isLoading = false;
             this.$toast(data.message, {variant:'danger'});
-        });
+        }.bind(this));
     },
-    $imgAdd(pos, $file){
+    $imgAdd: function(pos, $file){
         alert(pos);
         var formdata = new FormData();
         formdata.append('file', $file);
@@ -59,9 +59,9 @@ const app = new Vue({
             method: 'post',
             data: formdata,
             headers: { 'Content-Type': 'multipart/form-data' },
-        }, (res)=>{
+        }, function(res){
             this.$refs.md.$img2Url(pos, res.data.url); 
-        })
+        }.bind(this))
     },
   },
 });

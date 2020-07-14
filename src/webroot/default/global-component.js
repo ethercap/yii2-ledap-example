@@ -31,28 +31,27 @@ var app = new Vue({
         ],
     },
     methods: {
-        showLoading(){
+        showLoading: function(){
             this.isLoading = true;
-            setTimeout(()=>{
+            setTimeout(function(){
                 this.isLoading = false;
-            }, 3000);
+            }.bind(this), 3000);
         },
-        showAlert(){
+        showAlert: function(){
             //参见https://bootstrap-vue.org/docs/components/modal
             //等同于，this.$bvModal.msgBoxOk
             this.$alert(this.jsConfig.message, this.jsConfig);    
         },
-        showConfirm(){
+        showConfirm: function(){
             //参见https://bootstrap-vue.org/docs/components/modal
             //this.$bvModal.msgBoxConfirm
-            this.$confirm(this.jsConfig.message, this.jsConfig).then((ret)=>{
+            this.$confirm(this.jsConfig.message, this.jsConfig).then(function(ret){
                 console.log(ret);
-            }).catch(()=>{
+            }).catch(function(){
                 console.log("error");
             });    
         },
-        
-        test(){
+        test: function(){
             this.$toast("hello world");
         },
     },
